@@ -53,6 +53,9 @@ oneEleven.drawReferenceInto(p5, p5.width / 2, p5.height / 2, p5.width / 2, p5.he
 
 That's the basics, and yeah, this library/SDK is pretty lo-fi. It will evolve into something a little more refined/open soon. But for now, it provides an easy way to make One Eleven extensions.
 
+The best way to see what's happening is to look at how the template project is using it in:
+* `src/index.js` - this is the main code that will be run when you run `npm start`
+* `samples/landscape-landfill.js` - this is the code used to generate the outputs for the FXHash project [One Eleven (Landscape/Landfill)](https://www.fxhash.xyz/generative/13830) - if you want to use this, just copy it's contents in the `src/index.js` file.
 
 everything after this is from the original readme from the template
 
