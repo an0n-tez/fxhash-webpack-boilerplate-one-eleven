@@ -1,3 +1,61 @@
+an0n.tez // One Eleven fxhash template
+================
+
+Better Documentation coming but here's a quick start:
+
+This is a template project to help you embed One Eleven into your project.
+
+There's only two files that really matter:
+* src/one-eleven.js (this is the library you need to import into your js)
+* public/overpass-mono-bold.otf (this is the public domain font that is used to draw the text)
+
+Usage:
+
+In all snippets the `p5` object is your instantiated p5 object
+
+If using in p5, make sure to preload the font in p5's preloader
+
+```js
+OneEleven.preload(p5);
+```
+
+Create a OneEleven object
+
+```js
+var seed = "ooa3vMVqd2EH7KDVB87Bnrmj29oacUhdzXJy3bThiK5PaZy6Pgg"; // or whatever you are using for your seed
+var oneEleven = new OneEleven(p5, seed, FOREGROUND_COLOR, BACKGROUND_COLOR);
+```
+
+Now you have an object that has created two internal canvases
+* `oneEleven.referenceImage`: this is the canvas the text and border is drawn directly too. it is quick to create, and is a clean image of the basic element
+* `oneEleven.renderedImage`: this is the canvas that the object will draw to by sampling the reference image and then drawing it as small dots, to give it a more textured feel. this is what is seen in the genesis One Eleven project. it starts blank, and needs to be told when to render each frame/stage...
+
+Great, now, you can just use the `referenceImage` as is, or if you want to render the textured version you can call:
+
+```js
+// to render one frame
+oneEleven.renderStage(); 
+// to render all the setup stages at once and just get the textured image rendered
+oneEleven.renderFullSetup();
+
+// after this you can continue to call renderStage() to progress along the decaying animation
+```
+
+At this point, you still can't see anything because the drawings are just going to the `OneEleven`'s internal canvases. If you want to draw to your visible canvas, do this:
+
+```js
+// draw the textured image into your canvas with args (p5, x, y, width, height)
+oneEleven.drawRenderedInto(p5, p5.width / 2, p5.height / 2, p5.width / 2, p5.height / 2);
+
+// draw the clean, reference image into your canvas with args (p5, x, y, width, height)
+oneEleven.drawReferenceInto(p5, p5.width / 2, p5.height / 2, p5.width / 2, p5.height / 2);
+```
+
+That's the basics, and yeah, this library/SDK is pretty lo-fi. It will evolve into something a little more refined/open soon. But for now, it provides an easy way to make One Eleven extensions.
+
+
+everything after this is from the original readme from the template
+
 FXHASH Generative Token webpack boilerplate
 ================
 
